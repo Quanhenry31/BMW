@@ -13,6 +13,6 @@ namespace Models
         public string? email { get; set; }
         public string? password { get; set; }
         public string? phone { get; set; }
-        public string? queQuan { get; set; }
+        public string? token { get; set; }
     }
 }
