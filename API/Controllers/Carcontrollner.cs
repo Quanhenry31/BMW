@@ -21,5 +21,14 @@ namespace Api.BanHang.Controllers
         {
             return _CarBLL.GetDatabyID(id);
         }
+
+        [Route("Create")]
+        [HttpPost]
+        public Cars CreateCar([FromBody] Cars model)
+        {
+            _CarBLL.Create(model);
+            return model;
+        } 
+
     }
 }

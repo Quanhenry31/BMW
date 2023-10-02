@@ -37,12 +37,13 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_khach_create",
-                "@TenKH", model.TenKH,
-                "@GioiTinh", model.GioiTinh,
-                "@DiaChi", model.DiaChi,
-                "@SDT", model.SDT,
-                "@Email", model.Email);
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_ThemCar",
+                "@name", model.name,
+                "@modelCode", model.modelCode,
+                "@year", model.year,
+                "@price", model.price,
+                "@description", model.description,
+                "@categoryID", model.categoryID);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -56,3 +57,4 @@ namespace DAL
         }
     }
 }
+9

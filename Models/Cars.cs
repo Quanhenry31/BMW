@@ -11,6 +11,7 @@ namespace Models
         public int carID { get; set; }
         public string? name { get; set; }
         public string? modelCode { get; set; }
+        public DateTime year { get; set; }
         public string? price { get; set; }
         public string? description { get; set; }
         public string? categoryID { get; set; }

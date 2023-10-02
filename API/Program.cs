@@ -10,6 +10,7 @@ builder.Services.AddTransient<ICarRepository, CarRepository>();
 builder.Services.AddTransient<ICarBLL, CarBLL>();
 
 
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

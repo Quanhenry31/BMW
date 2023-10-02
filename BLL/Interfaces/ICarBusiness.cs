@@ -10,6 +10,6 @@ namespace BusinessLogicLayer
     public interface ICarBLL
     {
         Cars GetDatabyID(string id);
-
+        bool Create(Cars model);
     }
 }

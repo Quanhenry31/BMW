@@ -17,5 +17,9 @@ namespace BusinessLogicLayer
             return _res.GetDatabyID(id);
         }
         
+        public bool Create (Cars model)
+        {
+            return _res.Create(model);
+        }
     }
 }
