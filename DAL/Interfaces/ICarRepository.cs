@@ -10,7 +10,13 @@ namespace DAL
 {
     public interface ICarRepository
     {
+        List<Cars> GetAll();
+
         Cars GetDatabyID(string id);
         bool Create(Cars model);
+        bool Delete(string id);
+        bool Update(Cars model);
+
+
     }
 }

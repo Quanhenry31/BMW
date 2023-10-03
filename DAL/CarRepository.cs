@@ -11,17 +11,17 @@ namespace DAL
 {
     public class CarRepository : ICarRepository
     {
-        private IDatabaseHelper _dbHelper;
-        public CarRepository(IDatabaseHelper dbHelper)
+        private IDatabaseHelper _db;
+        public CarRepository(IDatabaseHelper db)
         {
-            _dbHelper = dbHelper;
+            _db = db;
         }
         public Cars GetDatabyID(string id)
         {
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_getcar",
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getcar",
                      "@id",id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
@@ -37,7 +37,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_ThemCar",
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_ThemCar",
                 "@name", model.name,
                 "@modelCode", model.modelCode,
                 "@year", model.year,
@@ -55,6 +55,63 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Delete(string id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_XoaCar",
+                "@carID", id);
+                ;
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<Cars> GetAll()
+        {
+            string msgError = "";
+            try
+            {
+                var data = _db.ExecuteQuery("sp_getcarALL");
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return data.ConvertTo<Cars>().ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public bool Update(Cars model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_SuaCar",
+                "@carID", model.carID,
+                "@name", model.name,
+                "@modelCode", model.modelCode,
+                "@year", model.year,
+                "@price", model.price,
+                "@description", model.description);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
-9

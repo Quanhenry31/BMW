@@ -10,6 +10,7 @@ namespace DAL
     }
     public interface IDatabaseHelper
     {
+        DataTable ExecuteQuery(string query, object[] parameters = null);
         void SetConnectionString(string connectionString);
         /// <summary>
         /// Open Connection to PostGresDB

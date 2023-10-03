@@ -1,7 +1,7 @@
-﻿
-using Models;
+﻿using Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http;
 using BusinessLogicLayer;
 
 namespace Api.BanHang.Controllers
@@ -28,7 +28,24 @@ namespace Api.BanHang.Controllers
         {
             _CarBLL.Create(model);
             return model;
-        } 
-
+        }
+        [HttpDelete("delete-car")]
+        public IActionResult DeleteItem(string id)
+        {
+            _CarBLL.Delete(id);
+            return Ok(new { message = "xoas thanh cong" });
+        }
+        [HttpGet("get-all")]
+        public IActionResult GetAll()
+        {
+            var dt = _CarBLL.GetAll();
+            return Ok(dt);
+        }
+        [HttpPut("update-account")]
+        public Cars UpdateItem([FromBody] Cars model)
+        {
+            _CarBLL.Update(model);
+            return model;
+        }
     }
 }
