@@ -80,3 +80,4 @@ C:\Users\tranb\OneDrive\Documents\Nam3-HK1\asp.net\DO_AN2\API\obj\Debug\net6.0\r
 C:\Users\tranb\OneDrive\Documents\Nam3-HK1\asp.net\DO_AN2\API\obj\Debug\net6.0\API.pdb
 C:\Users\tranb\OneDrive\Documents\Nam3-HK1\asp.net\DO_AN2\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\tranb\OneDrive\Documents\Nam3-HK1\asp.net\DO_AN2\API\obj\Debug\net6.0\ref\API.dll
+C:\Users\tranb\OneDrive\Documents\Nam3-HK1\asp.net\DO_AN2\API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
