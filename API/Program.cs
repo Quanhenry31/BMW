@@ -23,7 +23,9 @@ builder.Services.AddTransient<ICarBLL, CarBLL>();
 /// add user
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserBusiness, UserBusiness>();
-
+// Add catelory to the container.
+builder.Services.AddTransient<ICateRepository, CateRepository>();
+builder.Services.AddTransient<ICateBusiness, CateBusiness>();
 // configure strongly typed settings objects
 IConfiguration configuration = builder.Configuration;
 var appSettingsSection = configuration.GetSection("AppSettings");

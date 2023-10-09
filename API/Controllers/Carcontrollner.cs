@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
 using BusinessLogicLayer;
 
-namespace Api.BanHang.Controllers
+namespace Car
 {
     [Route("api/[controller]")]
     [ApiController]
