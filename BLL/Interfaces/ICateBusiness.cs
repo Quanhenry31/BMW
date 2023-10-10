@@ -10,7 +10,12 @@ namespace BusinessLogicLayer
     public interface ICateBusiness
     {
         List<Categories> GetAll();
+        Categories GetDatabyID(string id);
+
         bool Create(Categories model);
+        bool Delete(string id);
+
+        bool Update(Categories model);
 
 
     }

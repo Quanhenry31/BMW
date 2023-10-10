@@ -8,37 +8,47 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class CateRepository : ICateRepository
+    public class UserHandRepository : IUserHandRepository
     {
         private IDatabaseHelper _db;
-        public CateRepository(IDatabaseHelper db)
+        public UserHandRepository(IDatabaseHelper db)
         {
             _db = db;
         }
-        public List<Categories> GetAll()
+        public bool Create(UserHand model)
         {
             string msgError = "";
             try
             {
-                var data = _db.ExecuteQuery("sp_getCategoriesALL");
-                if (!string.IsNullOrEmpty(msgError))
-                    throw new Exception(msgError);
-                return data.ConvertTo<Categories>().ToList();
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_AddUsers",
+                "@userName", model.userName,
+                "@email", model.email,
+                "@password", model.password,
+                "@phone", model.phone,
+                "@queQuan", model.queQuan);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
-        public bool Create(Categories model)
+        public bool Update(UserHand model)
         {
             string msgError = "";
             try
             {
-                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_AddCategories",
-                "@name", model.name,
-                "@description", model.description);
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_SuaUsers",
+                "@userID", model.userID,
+                "@userName", model.userName,
+                "@email", model.email,
+                "@password", model.password,
+                "@phone", model.phone,
+                "@queQuan", model.queQuan);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -55,8 +65,8 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_XoaCategories",
-                "@categoryID", id);
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_XoaUsers",
+                "@userID", id);
                 ;
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
@@ -69,36 +79,16 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Update(Categories model)
+        public UserHand GetDatabyID(string id)
         {
             string msgError = "";
             try
             {
-                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_SuaCategories",
-                "@categoryID", model.categoryID,
-                "@name", model.name,
-                "@description", model.description);
-                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
-                {
-                    throw new Exception(Convert.ToString(result) + msgError);
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public Categories GetDatabyID(string id)
-        {
-            string msgError = "";
-            try
-            {
-                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getCategoriesID",
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getUsersID",
                      "@id", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
-                return dt.ConvertTo<Categories>().FirstOrDefault();
+                return dt.ConvertTo<UserHand>().FirstOrDefault();
             }
             catch (Exception ex)
             {

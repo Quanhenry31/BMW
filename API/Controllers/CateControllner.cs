@@ -20,11 +20,30 @@ namespace Cate
             var dt = _CateBll.GetAll();
             return Ok(dt);
         }
+        [Route("get-by-id/{id}")]
+        [HttpGet]
+        public Categories GetDatabyID(string id)
+        {
+            return _CateBll.GetDatabyID(id);
+        }
+
         [Route("Create")]
         [HttpPost]
         public Categories CreateCar([FromBody] Categories model)
         {
             _CateBll.Create(model);
+            return model;
+        }
+        [HttpDelete("delete-car")]
+        public IActionResult DeleteItem(string id)
+        {
+            _CateBll.Delete(id);
+            return Ok(new { message = "xoas thanh cong" });
+        }
+        [HttpPut("update-cate")]
+        public Categories UpdateItem([FromBody] Categories model)
+        {
+            _CateBll.Update(model);
             return model;
         }
     }

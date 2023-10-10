@@ -26,10 +26,17 @@ builder.Services.AddTransient<IUserBusiness, UserBusiness>();
 // Add catelory to the container.
 builder.Services.AddTransient<ICateRepository, CateRepository>();
 builder.Services.AddTransient<ICateBusiness, CateBusiness>();
+// user hand controllner
+builder.Services.AddTransient<IUserHandRepository, UserHandRepository>();
+builder.Services.AddTransient<IUserHandBusiness, UserHandBusiness>();
+
+
 // configure strongly typed settings objects
 IConfiguration configuration = builder.Configuration;
 var appSettingsSection = configuration.GetSection("AppSettings");
 builder.Services.Configure<AppSettings>(appSettingsSection);
+
+
 
 // configure jwt authentication
 var appSettings = appSettingsSection.Get<AppSettings>();

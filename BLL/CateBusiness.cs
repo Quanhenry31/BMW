@@ -15,6 +15,10 @@ namespace BusinessLogicLayer
         {
             _res = res;
         }
+        public Categories GetDatabyID(string id)
+        {
+            return _res.GetDatabyID(id);
+        }
         public List<Categories> GetAll()
         {
             return _res.GetAll();
@@ -22,6 +26,14 @@ namespace BusinessLogicLayer
         public bool Create(Categories model)
         {
             return _res.Create(model);
+        }
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(Categories model)
+        {
+            return _res.Update(model);
         }
     }
 }

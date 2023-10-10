@@ -10,7 +10,10 @@ namespace DAL
     public interface ICateRepository
     {
         List<Categories> GetAll();
-        bool Create(Categories model);
+        Categories GetDatabyID(string id);
 
+        bool Create(Categories model);
+        bool Delete(string id);
+        bool Update(Categories model);
     }
 }
