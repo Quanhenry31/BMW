@@ -16,6 +16,7 @@ namespace BusinessLogicLayer
         bool Create(Cars model);
         bool Delete(string id);
         bool Update(Cars model);
+        public List<Cars> Search(int pageIndex, int pageSize, out long total, string name);
 
     }
 }

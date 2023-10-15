@@ -17,7 +17,3 @@ namespace Models
         public string? categoryID { get; set; }
     }
 }
-//year date,
-//    price varchar(50),
-//	description nvarchar(500),--Mô tả chi tiết về xe ô tô.
-//	categoryID varchar(50),

@@ -113,6 +113,28 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<Cars> Search(int pageIndex, int pageSize, out long total, string name)
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_search_car",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@name", name
+                   
+                     );
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<Cars>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }
