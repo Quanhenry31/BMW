@@ -46,5 +46,34 @@ namespace Cate
             _CateBll.Update(model);
             return model;
         }
+        [Route("search")]
+        [HttpPost]
+        public IActionResult Search([FromBody] Dictionary<string, object> formData)
+        {
+            try
+            {
+                var pageIndex = int.Parse(formData["pageIndex"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string name = "";
+                if (formData.Keys.Contains("name") && !string.IsNullOrEmpty(Convert.ToString(formData["name"]))) { name = Convert.ToString(formData["name"]); }
+
+
+                long total = 0;
+                var data = _CateBll.Search(pageIndex, pageSize, out total, name);
+                return Ok(
+                    new
+                    {
+                        TotalItems = total,
+                        Data = data,
+                        PageIndex = pageIndex,
+                        PageSize = pageSize
+                    }
+                    );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-using BLL;
+﻿using BLL;
 using BLL.Interfaces;
 using BusinessLogicLayer;
 using DAL;
@@ -9,13 +9,33 @@ using Microsoft.IdentityModel.Tokens;
 using Models;
 using System.Text;
 
+const string corsPolicyName = "ApiCORS";
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
+    options.AddPolicy(corsPolicyName, policy =>
+    {
+        policy.WithOrigins("http://127.0.0.1:5500");
+    });
     options.AddPolicy("AllowAll", builder =>
         builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+   /* options.AddPolicy("AllowSpecificOrigin", builder =>
+    {
+        builder.WithOrigins("http://127.0.0.1:5500") // Thêm nguồn của bạn vào đây
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+
+    options.AddPolicy("AllowAnyOrigin", builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });*//* thêm cái này vào trong program*/
+
 
 });
+
 // Add services to the container.
 builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
 builder.Services.AddTransient<ICarRepository, CarRepository>();
@@ -74,7 +94,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(corsPolicyName);
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

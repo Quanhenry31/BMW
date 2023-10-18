@@ -15,5 +15,7 @@ namespace DAL
         bool Create(Categories model);
         bool Delete(string id);
         bool Update(Categories model);
+        public List<Categories> Search(int pageIndex, int pageSize, out long total, string name);
+
     }
 }

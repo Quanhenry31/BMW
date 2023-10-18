@@ -40,10 +40,10 @@ namespace DAL
                 var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_ThemCar",
                 "@name", model.name,
                 "@modelCode", model.modelCode,
-                "@year", model.year,
                 "@price", model.price,
-                "@description", model.description,
-                "@categoryID", model.categoryID);
+                "@year", model.year,
+                "@categoryID", model.categoryID,
+                "@imgLink", model.imgLink);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -99,9 +99,10 @@ namespace DAL
                 "@carID", model.carID,
                 "@name", model.name,
                 "@modelCode", model.modelCode,
-                "@year", model.year,
                 "@price", model.price,
-                "@description", model.description);
+                "@year", model.year,
+                "@categoryID", model.categoryID,
+                "@imgLink", model.imgLink);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

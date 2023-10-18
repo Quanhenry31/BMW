@@ -35,5 +35,9 @@ namespace BusinessLogicLayer
         {
             return _res.Update(model);
         }
+        public List<Categories> Search(int pageIndex, int pageSize, out long total, string name)
+        {
+            return _res.Search(pageIndex, pageSize, out total, name);
+        }
     }
 }
