@@ -44,5 +44,12 @@ namespace API.Controllers
             return _UserHandBLL.GetDatabyID(id);
         }
 
+        [HttpGet("get-all")]
+        public IActionResult GetAll()
+        {
+            var dt = _UserHandBLL.GetAll();
+            return Ok(dt);
+        }
+
     }
 }

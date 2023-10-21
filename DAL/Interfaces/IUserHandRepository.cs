@@ -9,6 +9,7 @@ namespace DAL.Interfaces
 {
     public interface IUserHandRepository
     {
+        List<UserHand> GetAll();
         bool Create(UserHand model);
         bool Update(UserHand model);
         bool Delete(string id);

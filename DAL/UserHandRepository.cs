@@ -95,5 +95,21 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<UserHand> GetAll()
+        {
+            string msgError = "";
+            try
+            {
+                var data = _db.ExecuteQuery("sp_getuserALL");
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return data.ConvertTo<UserHand>().ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

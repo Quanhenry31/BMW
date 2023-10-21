@@ -36,5 +36,9 @@ namespace BLL
         {
             return _res.GetDatabyID(id);
         }
+        public List<UserHand> GetAll()
+        {
+            return _res.GetAll();
+        }
     }
 }

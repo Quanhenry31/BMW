@@ -9,6 +9,7 @@ namespace BLL.Interfaces
 {
     public interface IUserHandBusiness
     {
+        List<UserHand> GetAll();
         bool Create(UserHand model);
         bool Update(UserHand model);
         bool Delete(string id);
