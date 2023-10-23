@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IUserHandRepository
+    public interface IOrdersRepository
     {
-        List<UserHand> GetAll();
-        bool Create(UserHand model);
+        List<Orders> GetAll();
+        Orders GetDatabyID(string id);
+
+        bool Create(Orders model);
         bool Delete(string id);
-        UserHand GetDatabyID(string id);
-        bool Update(UserHand model);
+        bool Update(Orders model);
     }
 }

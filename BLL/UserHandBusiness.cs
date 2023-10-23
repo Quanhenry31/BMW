@@ -24,6 +24,7 @@ namespace BLL
         {
             return _res.Create(model);
         }
+       
         public bool Update(UserHand model)
         {
             return _res.Update(model);
@@ -40,5 +41,6 @@ namespace BLL
         {
             return _res.GetAll();
         }
+  
     }
 }

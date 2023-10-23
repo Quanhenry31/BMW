@@ -1,4 +1,5 @@
 ﻿using DAL.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,7 @@ namespace DAL
                 throw ex;
             }
         }
+
         public bool Update(UserHand model)
         {
             string msgError = "";
@@ -111,5 +113,7 @@ namespace DAL
                 throw ex;
             }
         }
+
+      
     }
 }

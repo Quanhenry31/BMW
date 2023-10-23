@@ -17,7 +17,6 @@ namespace API.Controllers
             _UserHandBLL = UserBLL;
         }
 
-
         [Route("Create_user")]
         [HttpPost]
         public UserHand CreateUser([FromBody] UserHand model)
