@@ -43,7 +43,9 @@ namespace DAL
                 "@price", model.price,
                 "@year", model.year,
                 "@categoryID", model.categoryID,
-                "@imgLink", model.imgLink);
+                "@imgLink", model.imgLink,
+                "@quantity", model.quantity
+                );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -102,7 +104,8 @@ namespace DAL
                 "@price", model.price,
                 "@year", model.year,
                 "@categoryID", model.categoryID,
-                "@imgLink", model.imgLink);
+                "@imgLink", model.imgLink,
+                 "@quantity", model.quantity);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

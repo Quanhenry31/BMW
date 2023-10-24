@@ -16,6 +16,7 @@ namespace Models
         public DateTime year { get; set; }
         public string? categoryID { get; set; }
         public string? imgLink { get; set; }
+        public string? quantity { get; set; }
 
     }
 }
