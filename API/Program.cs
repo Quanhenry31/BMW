@@ -54,7 +54,9 @@ builder.Services.AddTransient<IOrdersBusiness, OrdersBusiness>();
 //payment
 builder.Services.AddTransient<IPaymentsRepository, PaymentsRepository>();
 builder.Services.AddTransient<IPaymentsBusiness, PaymentsBusiness>();
-
+//Adv
+builder.Services.AddTransient<IAdvRepository, AdvReposity>();
+builder.Services.AddTransient<IAdvBusiness, AdvBusiness>();
 
 // configure strongly typed settings objects
 IConfiguration configuration = builder.Configuration;
