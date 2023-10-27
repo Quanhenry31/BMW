@@ -18,9 +18,9 @@ namespace BLL
         {
             _res = res;
         }
-        public Orders GetDatabyID(string id)
+        public Orders GetDatabyID(string OrderID)
         {
-            return _res.GetDatabyID(id);
+            return _res.GetDatabyID(OrderID);
         }
         public List<Orders> GetAll()
         {

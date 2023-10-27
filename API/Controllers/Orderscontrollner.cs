@@ -16,11 +16,11 @@ namespace Orderss
             {
                 _OderBLL = oderBLL;
             }
-            [Route("get-by-id/{id}")]
+            [Route("get-by-id/{OrderID}")]
             [HttpGet]
-            public Orders GetDatabyID(string id)
+            public Orders GetDatabyID(string OrderID)
             {
-                return _OderBLL.GetDatabyID(id);
+                return _OderBLL.GetDatabyID(OrderID);
             }
 
             [Route("Create")]

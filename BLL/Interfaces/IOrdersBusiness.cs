@@ -10,7 +10,7 @@ namespace BLL.Interfaces
     public interface IOrdersBusiness
     {
         List<Orders> GetAll();
-        Orders GetDatabyID(string id);
+        Orders GetDatabyID(string OrderID);
 
         bool Create(Orders model);
         bool Delete(string id);

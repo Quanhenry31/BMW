@@ -36,14 +36,15 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "Proc_InsertOrder",
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_create_hd2",
                 "@UserID", model.@UserID,
                 "@OrderDate", model.@OrderDate,
                 "@Address", model.Address,
                 "@DateCreated", model.DateCreated,
                 "@DateOk", model.DateOk,
                 "@Time", model.Time,
-                "@allPrice", model.allPrice);
+                "@allPrice", model.allPrice,
+                "@list_json_chitiethoadon", model.list_json_chitiethoadon != null ? MessageConvert.SerializeObject(model.list_json_chitiethoadon) : null);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -79,14 +80,15 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "Proc_UpdateOrder",
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_hoa_don_update",
                  "@OrderID", model.@OrderID,
                 "@OrderDate", model.@OrderDate,
                 "@Address", model.Address,
                 "@DateCreated", model.DateCreated,
                 "@DateOk", model.DateOk,
                 "@Time", model.Time,
-                "@allPrice", model.allPrice);
+                "@allPrice", model.allPrice,
+                "@list_json_chitiethoadon", model.list_json_chitiethoadon != null ? MessageConvert.SerializeObject(model.list_json_chitiethoadon) : null);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -98,13 +100,16 @@ namespace DAL
                 throw ex;
             }
         }
-        public Orders GetDatabyID(string id)
+        public Orders GetDatabyID(string OrderID)
         {
             string msgError = "";
             try
             {
-                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getOrder_ID",
-                     "@id", id);
+                var dt = _db.ExecuteSProcedureReturnDataTable(
+                    out msgError,
+                    "sp_get_oder_by_id",
+                     "@OrderID",
+                     OrderID);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<Orders>().FirstOrDefault();
