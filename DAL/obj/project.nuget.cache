@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/5Wg2cGwvaEreX1iY2fz2AVSAZgmoWMK+sLo2HzLAcsJiwxTPTx4GdnTKLdY6Iy5dv0kdoXzpd2Czu6wFOTVgw==",
+  "dgSpecHash": "4MNRHYMaX8PeOr/FYprkhm+ahc8+llt4DI9OJcs4B9q9y+OI/27fvL2VAO+YaPtXJnkG7C067ykjt4Xjewm9Zg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tranb\\OneDrive\\Documents\\Nam3-HK1\\asp.net\\DO_AN2\\DAL\\DAL.csproj",
+  "projectFilePath": "C:\\Users\\tranb\\OneDrive\\Documents\\Nam3-HK2\\SUPO_API\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tranb\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\tranb\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

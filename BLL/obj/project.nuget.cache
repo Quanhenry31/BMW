@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bEfPMtR7jhiNsk1kAElYmXKnOPhAW/AfJuCdEmuy2avGqEQJ1RBn5VhC6651djxyXbSXUIO56CU3Nni/PfykLA==",
+  "dgSpecHash": "KIYaVw5GuDhhw8hL8yc5z0S9eSoZ1JtLJKaXqUR40OhbaJb3YJgpzqhq8V/tErYlHsDpeNSrw6ejknAoYhlrrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tranb\\OneDrive\\Documents\\Nam3-HK1\\asp.net\\DO_AN2\\BLL\\BLL.csproj",
+  "projectFilePath": "C:\\Users\\tranb\\OneDrive\\Documents\\Nam3-HK2\\SUPO_API\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tranb\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\tranb\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

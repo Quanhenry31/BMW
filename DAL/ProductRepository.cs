@@ -9,41 +9,41 @@ using Microsoft.Identity.Client;
 
 namespace DAL
 {
-    public class CarRepository : ICarRepository
+    public class ProductRepository : IProductRepository
     {
         private IDatabaseHelper _db;
-        public CarRepository(IDatabaseHelper db)
+        public ProductRepository(IDatabaseHelper db)
         {
             _db = db;
         }
-        public Cars GetDatabyID(string id)
+        public Product GetDatabyID(string id)
         {
             string msgError = "";
             try
             {
-                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getcar",
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getProduct",
                      "@id",id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
-                return dt.ConvertTo<Cars>().FirstOrDefault();
+                return dt.ConvertTo<Product>().FirstOrDefault();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public bool Create(Cars  model)
+        public bool Create(Product  model)
         {
             string msgError = "";
             try
             {
-                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_ThemCar",
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_ThemProduct",
                 "@name", model.name,
                 "@modelCode", model.modelCode,
                 "@price", model.price,
                 "@year", model.year,
                 "@categoryID", model.categoryID,
-                "@imgLink", model.imgLink,
+                "@image", model.image,
                 "@quantity", model.quantity
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
@@ -62,8 +62,8 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_XoaCar",
-                "@carID", id);
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_XoaProduct",
+                "@productID", id);
                 ;
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
@@ -76,15 +76,15 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<Cars> GetAll()
+        public List<Product> GetAll()
         {
             string msgError = "";
             try
             {
-                var data = _db.ExecuteQuery("sp_getcarALL");
+                var data = _db.ExecuteQuery("sp_getProductALL");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
-                return data.ConvertTo<Cars>().ToList();
+                return data.ConvertTo<Product>().ToList();
             }
             catch (Exception ex)
             {
@@ -92,19 +92,19 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Update(Cars model)
+        public bool Update(Product model)
         {
             string msgError = "";
             try
             {
-                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_SuaCar",
-                "@carID", model.carID,
+                var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "SP_SuaProduct",
+                "@productID", model.productID,
                 "@name", model.name,
                 "@modelCode", model.modelCode,
                 "@price", model.price,
                 "@year", model.year,
                 "@categoryID", model.categoryID,
-                "@imgLink", model.imgLink,
+                "@image", model.image,
                  "@quantity", model.quantity);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
@@ -117,13 +117,13 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<Cars> Search(int pageIndex, int pageSize, out long total, string name)
+        public List<Product> Search(int pageIndex, int pageSize, out long total, string name)
         {
             string msgError = "";
             total = 0;
             try
             {
-                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_search_car",
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_search_Product",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
                     "@name", name
@@ -132,7 +132,7 @@ namespace DAL
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
-                return dt.ConvertTo<Cars>().ToList();
+                return dt.ConvertTo<Product>().ToList();
             }
             catch (Exception ex)
             {
@@ -140,5 +140,10 @@ namespace DAL
             }
         }
 
+
+        List<Product> IProductRepository.Search(int pageIndex, int pageSize, out long total, string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

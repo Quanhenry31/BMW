@@ -37,8 +37,8 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
-builder.Services.AddTransient<ICarRepository, CarRepository>();
-builder.Services.AddTransient<ICarBLL, CarBLL>();
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
+builder.Services.AddTransient<IProductBLL, ProductBLL>();
 /// add user
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserBusiness, UserBusiness>();
@@ -51,6 +51,10 @@ builder.Services.AddTransient<IUserHandBusiness, UserHandBusiness>();
 //oder
 builder.Services.AddTransient<IOrdersRepository, OrdersRepository>();
 builder.Services.AddTransient<IOrdersBusiness, OrdersBusiness>();
+//oderDrtails
+builder.Services.AddTransient<IOrderDetailsRepository, OrderDetailsRepository>();
+builder.Services.AddTransient<IOrderDetailsBusiness, OrderDetailsBussiness>();
+
 //payment
 builder.Services.AddTransient<IPaymentsRepository, PaymentsRepository>();
 builder.Services.AddTransient<IPaymentsBusiness, PaymentsBusiness>();

@@ -22,6 +22,11 @@ namespace BLL
         {
             return _res.GetDatabyID(OrderID);
         }
+
+        public Orders GetDatabyUserID(string UserID)
+        {
+            return _res.GetDatabyUserID(UserID);
+        }
         public List<Orders> GetAll()
         {
             return _res.GetAll();

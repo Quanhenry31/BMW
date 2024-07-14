@@ -14,5 +14,6 @@ namespace Models
         public string? password { get; set; }
         public string? phone { get; set; }
         public string? queQuan { get; set; }
+        public int role { get; set; }
     }
 }

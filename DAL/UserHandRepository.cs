@@ -26,7 +26,8 @@ namespace DAL
                 "@email", model.email,
                 "@password", model.password,
                 "@phone", model.phone,
-                "@queQuan", model.queQuan);
+                "@queQuan", model.queQuan,
+                "@role", model.role);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -50,7 +51,8 @@ namespace DAL
                 "@email", model.email,
                 "@password", model.password,
                 "@phone", model.phone,
-                "@queQuan", model.queQuan);
+                "@queQuan", model.queQuan,
+                "@role", model.role);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

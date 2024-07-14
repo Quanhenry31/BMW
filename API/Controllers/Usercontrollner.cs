@@ -23,7 +23,7 @@ namespace API.Controllers
         {
             var user = _accBusiness.Login(model.userName, model.password);
             if (user == null) return BadRequest(new { message = "Tài khoản hoặc mật khẩu không đúng!" });
-            return Ok(new { taikhoan = user.userName, Email = user.email, token = user.token });
+            return Ok(new { taikhoan = user.userName, Email = user.email, token = user.token , user.userID , user.phone, user.queQuan });
         }
 
     }

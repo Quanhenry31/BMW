@@ -4,47 +4,47 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
 using BusinessLogicLayer;
 
-namespace Car
+namespace Product_api
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Carcontrollner : ControllerBase
+    public class Productcontrollner : ControllerBase
     {
-        private ICarBLL _CarBLL;
-        public Carcontrollner(ICarBLL carBLL)
+        private IProductBLL _ProductBLL;
+        public Productcontrollner(IProductBLL productBLL)
         {
-            _CarBLL = carBLL;
+            _ProductBLL = productBLL;
         }
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public Cars GetDatabyID(string id)
+        public Product GetDatabyID(string id)
         {
-            return _CarBLL.GetDatabyID(id);
+            return _ProductBLL.GetDatabyID(id);
         }
 
         [Route("Create")]
         [HttpPost]
-        public Cars CreateCar([FromBody] Cars model)
+        public Product CreateCar([FromBody] Product model)
         {
-            _CarBLL.Create(model);
+            _ProductBLL.Create(model);
             return model;
         }
         [HttpDelete("delete-car")]
         public IActionResult DeleteItem(string id)
         {
-            _CarBLL.Delete(id);
+            _ProductBLL.Delete(id);
             return Ok(new { message = "xoas thanh cong" });
         }
         [HttpGet("get-all")]
         public IActionResult GetAll()
         {
-            var dt = _CarBLL.GetAll();
+            var dt = _ProductBLL.GetAll();
             return Ok(dt);
         }
         [HttpPut("update-account")]
-        public Cars UpdateItem([FromBody] Cars model)
+        public Product UpdateItem([FromBody] Product model)
         {
-            _CarBLL.Update(model);
+            _ProductBLL.Update(model);
             return model;
         }
         [Route("search")]
@@ -60,7 +60,7 @@ namespace Car
                
                
                 long total = 0;
-                var data = _CarBLL.Search(pageIndex, pageSize, out total, name);
+                var data = _ProductBLL.Search(pageIndex, pageSize, out total, name);
                 return Ok(
                     new
                     {

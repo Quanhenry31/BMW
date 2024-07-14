@@ -9,7 +9,7 @@ namespace DAL.Interfaces
 {
     public interface IUserRepository
     {
-        Users Login(string username, string password);
+        Users Login(string userName, string password);
 
     }
 }

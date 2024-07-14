@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Cars
+    public class Product
     {
-        public int carID { get; set; }
+        public int productID { get; set; }
         public string? name { get; set; }
         public string? modelCode { get; set; }
-        public string? price { get; set; }
+        public int price { get; set; }
         public DateTime year { get; set; }
-        public string? categoryID { get; set; }
-        public string? imgLink { get; set; }
-        public string? quantity { get; set; }
+        public int categoryID { get; set; }
+        public string? image { get; set; }
+        public int quantity { get; set; }
 
     }
 }

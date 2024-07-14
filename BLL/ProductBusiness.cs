@@ -5,20 +5,20 @@ using Models;
 
 namespace BusinessLogicLayer
 {
-    public class CarBLL : ICarBLL
+    public class ProductBLL : IProductBLL
     {
-        private ICarRepository _res;
+        private IProductRepository _res;
         private string secret;
-        public CarBLL(ICarRepository res)
+        public ProductBLL(IProductRepository res)
         {
             _res = res;
         }
-        public Cars GetDatabyID(string id)
+        public Product GetDatabyID(string id)
         {
             return _res.GetDatabyID(id);
         }
         
-        public bool Create (Cars model)
+        public bool Create (Product model)
         {
             return _res.Create(model);
         }
@@ -26,18 +26,24 @@ namespace BusinessLogicLayer
         {
             return _res.Delete(id);
         }
-        public List<Cars> GetAll()
+        public List<Product> GetAll()
         {
             return _res.GetAll();
         }
-        public bool Update(Cars model)
+        public bool Update(Product model)
         {
             return _res.Update(model);
         }
 
-        public List<Cars> Search(int pageIndex, int pageSize, out long total, string name)
+        public List<Product> Search(int pageIndex, int pageSize, out long total, string name)
         {
             return _res.Search(pageIndex, pageSize, out total, name);
+        }
+
+
+        List<Product> IProductBLL.Search(int pageIndex, int pageSize, out long total, string name)
+        {
+            throw new NotImplementedException();
         }
     }
 }

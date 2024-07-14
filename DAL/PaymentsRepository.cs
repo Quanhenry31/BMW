@@ -22,6 +22,7 @@ namespace DAL
             {
                 var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "Proc_InsertPayments",
                 "@OrderID", model.OrderID,
+                "@Name", model.Name,
                 "@PaymentDate", model.PaymentDate,
                 "@Amount", model.Amount,
                 "@PaymentMethod", model.PaymentMethod
@@ -46,6 +47,7 @@ namespace DAL
                 var result = _db.ExecuteScalarSProcedureWithTransaction(out msgError, "Proc_UpdatePayments",
                 "@PaymentID", model.PaymentID,
                 "@OrderID", model.OrderID,
+                "@Name", model.Name,
                 "@PaymentDate", model.PaymentDate,
                 "@Amount", model.Amount,
                 "@PaymentMethod", model.PaymentMethod);

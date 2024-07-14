@@ -9,7 +9,7 @@ namespace BLL.Interfaces
 {
     public interface IUserBusiness
     {
-        Users Login(string username, string password);
+        Users Login(string userName, string password);
 
     }
 }

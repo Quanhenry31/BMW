@@ -11,6 +11,7 @@ namespace BLL.Interfaces
     {
         List<Orders> GetAll();
         Orders GetDatabyID(string OrderID);
+        Orders GetDatabyUserID(string UserID);
 
         bool Create(Orders model);
         bool Delete(string id);

@@ -23,7 +23,14 @@ namespace Orderss
                 return _OderBLL.GetDatabyID(OrderID);
             }
 
-            [Route("Create")]
+        [Route("get-by-user-id")]
+        [HttpGet]
+        public Orders GetDatabyUserID(string UserID)
+        {
+            return _OderBLL.GetDatabyUserID(UserID);
+        }
+
+        [Route("Create")]
             [HttpPost]
             public Orders CreateCar([FromBody] Orders model)
             {

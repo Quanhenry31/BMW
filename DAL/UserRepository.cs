@@ -17,7 +17,7 @@ namespace DAL
             _db = db;
         }
 
-        public Users Login(string username, string password)
+        public Users Login(string userName, string password)
         {
             string msgError = "";
             try
@@ -25,7 +25,7 @@ namespace DAL
                 var data = _db.ExecuteSProcedureReturnDataTable(
                     out msgError,
                     "SP_Login",
-                    "@taikhoan", username,
+                    "@taikhoan", userName,
                     "@matkhau", password);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
